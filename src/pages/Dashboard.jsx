@@ -1,20 +1,22 @@
 import { Link } from 'react-router';
+import { useQuery } from 'convex/react';
+import { api } from '../../convex/_generated/api';
 
 // Stat Card Component
 function StatCard({ icon, label, value, trend, trendUp, color }) {
-    return (
-        <div className="stat-card" style={{ '--accent-color': color }}>
-            <div className="stat-icon">{icon}</div>
-            <div className="stat-content">
-                <p className="stat-label">{label}</p>
-                <p className="stat-value">{value}</p>
-                {trend && (
-                    <p className={`stat-trend ${trendUp ? 'up' : 'down'}`}>
-                        {trendUp ? '↑' : '↓'} {trend}
-                    </p>
-                )}
-            </div>
-            <style>{`
+  return (
+    <div className="stat-card" style={{ '--accent-color': color }}>
+      <div className="stat-icon">{icon}</div>
+      <div className="stat-content">
+        <p className="stat-label">{label}</p>
+        <p className="stat-value">{value}</p>
+        {trend && (
+          <p className={`stat-trend ${trendUp ? 'up' : 'down'}`}>
+            {trendUp ? '↑' : '↓'} {trend}
+          </p>
+        )}
+      </div>
+      <style>{`
         .stat-card {
           background: var(--bg-card);
           backdrop-filter: blur(12px);
@@ -89,21 +91,21 @@ function StatCard({ icon, label, value, trend, trendUp, color }) {
           color: var(--color-danger-400);
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 }
 
 // Quick Action Card Component
 function QuickActionCard({ icon, title, description, to, color }) {
-    return (
-        <Link to={to} className="action-card" style={{ '--accent-color': color }}>
-            <div className="action-icon">{icon}</div>
-            <div className="action-content">
-                <h3 className="action-title">{title}</h3>
-                <p className="action-description">{description}</p>
-            </div>
-            <div className="action-arrow">→</div>
-            <style>{`
+  return (
+    <Link to={to} className="action-card" style={{ '--accent-color': color }}>
+      <div className="action-icon">{icon}</div>
+      <div className="action-content">
+        <h3 className="action-title">{title}</h3>
+        <p className="action-description">{description}</p>
+      </div>
+      <div className="action-arrow">→</div>
+      <style>{`
         .action-card {
           display: flex;
           align-items: center;
@@ -181,176 +183,178 @@ function QuickActionCard({ icon, title, description, to, color }) {
           transform: translateX(4px);
         }
       `}</style>
-        </Link>
-    );
+    </Link>
+  );
 }
 
 // Icons
 const PositionIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-    </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  </svg>
 );
 
 const CandidateIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-        <circle cx="12" cy="7" r="4" />
-    </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+    <circle cx="12" cy="7" r="4" />
+  </svg>
 );
 
 const AnalysisIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 3v18h18" />
-        <path d="m19 9-5 5-4-4-3 3" />
-    </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 3v18h18" />
+    <path d="m19 9-5 5-4-4-3 3" />
+  </svg>
 );
 
 const RocketIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-    </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+  </svg>
 );
 
 const PlusIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M5 12h14" />
-        <path d="M12 5v14" />
-    </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M5 12h14" />
+    <path d="M12 5v14" />
+  </svg>
 );
 
 const TrendIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-        <polyline points="16 7 22 7 22 13" />
-    </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+    <polyline points="16 7 22 7 22 13" />
+  </svg>
 );
 
 function Dashboard() {
-    // Placeholder data - will be replaced with Convex queries
-    const stats = {
-        positions: 0,
-        candidates: 0,
-        analyses: 0,
-    };
+  // Use Convex queries for real data
+  const positions = useQuery(api.positions.list) || [];
 
-    return (
-        <div className="dashboard">
-            {/* Header */}
-            <header className="page-header">
-                <div className="header-content">
-                    <h1 className="page-title">
-                        Welcome to <span className="gradient-text">TOPSIS Recruit</span>
-                    </h1>
-                    <p className="page-description">
-                        Make data-driven hiring decisions using the TOPSIS multi-criteria decision analysis method
-                    </p>
-                </div>
-            </header>
+  const stats = {
+    positions: positions.length,
+    candidates: 0,  // Will be updated in Milestone 3
+    analyses: 0,    // Will be updated in Milestone 4
+  };
 
-            {/* Stats Section */}
-            <section className="stats-section">
-                <div className="stats-grid">
-                    <StatCard
-                        icon={<PositionIcon />}
-                        label="Active Positions"
-                        value={stats.positions}
-                        color="var(--color-primary-500)"
-                    />
-                    <StatCard
-                        icon={<CandidateIcon />}
-                        label="Total Candidates"
-                        value={stats.candidates}
-                        color="var(--color-accent-500)"
-                    />
-                    <StatCard
-                        icon={<AnalysisIcon />}
-                        label="Analyses Run"
-                        value={stats.analyses}
-                        color="var(--color-warning-500)"
-                    />
-                    <StatCard
-                        icon={<TrendIcon />}
-                        label="Success Rate"
-                        value="—"
-                        color="var(--color-success-500)"
-                    />
-                </div>
-            </section>
+  return (
+    <div className="dashboard">
+      {/* Header */}
+      <header className="page-header">
+        <div className="header-content">
+          <h1 className="page-title">
+            Welcome to <span className="gradient-text">TOPSIS Recruit</span>
+          </h1>
+          <p className="page-description">
+            Make data-driven hiring decisions using the TOPSIS multi-criteria decision analysis method
+          </p>
+        </div>
+      </header>
 
-            {/* Quick Actions */}
-            <section className="actions-section">
-                <h2 className="section-title">Quick Actions</h2>
-                <div className="actions-grid">
-                    <QuickActionCard
-                        icon={<PlusIcon />}
-                        title="Create Position"
-                        description="Define a new job position with custom evaluation criteria"
-                        to="/positions"
-                        color="var(--color-primary-500)"
-                    />
-                    <QuickActionCard
-                        icon={<CandidateIcon />}
-                        title="Add Candidates"
-                        description="Enter candidate data for evaluation"
-                        to="/positions"
-                        color="var(--color-accent-500)"
-                    />
-                    <QuickActionCard
-                        icon={<RocketIcon />}
-                        title="Run Analysis"
-                        description="Execute TOPSIS algorithm and view rankings"
-                        to="/analysis"
-                        color="var(--color-warning-500)"
-                    />
-                </div>
-            </section>
+      {/* Stats Section */}
+      <section className="stats-section">
+        <div className="stats-grid">
+          <StatCard
+            icon={<PositionIcon />}
+            label="Active Positions"
+            value={stats.positions}
+            color="var(--color-primary-500)"
+          />
+          <StatCard
+            icon={<CandidateIcon />}
+            label="Total Candidates"
+            value={stats.candidates}
+            color="var(--color-accent-500)"
+          />
+          <StatCard
+            icon={<AnalysisIcon />}
+            label="Analyses Run"
+            value={stats.analyses}
+            color="var(--color-warning-500)"
+          />
+          <StatCard
+            icon={<TrendIcon />}
+            label="Success Rate"
+            value="—"
+            color="var(--color-success-500)"
+          />
+        </div>
+      </section>
 
-            {/* Getting Started Guide */}
-            <section className="guide-section">
-                <div className="guide-card">
-                    <h2 className="guide-title">Getting Started</h2>
-                    <div className="steps">
-                        <div className="step">
-                            <div className="step-number">1</div>
-                            <div className="step-content">
-                                <h4>Create a Position</h4>
-                                <p>Define the job role and set up custom evaluation attributes (skills, experience, etc.)</p>
-                            </div>
-                        </div>
-                        <div className="step">
-                            <div className="step-number">2</div>
-                            <div className="step-content">
-                                <h4>Add Candidates</h4>
-                                <p>Enter candidate data with scores for each attribute you defined</p>
-                            </div>
-                        </div>
-                        <div className="step">
-                            <div className="step-number">3</div>
-                            <div className="step-content">
-                                <h4>Set Weights</h4>
-                                <p>Assign importance weights to each attribute (must sum to 1.0)</p>
-                            </div>
-                        </div>
-                        <div className="step">
-                            <div className="step-number">4</div>
-                            <div className="step-content">
-                                <h4>Run TOPSIS Analysis</h4>
-                                <p>Get objective, mathematically-grounded candidate rankings</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+      {/* Quick Actions */}
+      <section className="actions-section">
+        <h2 className="section-title">Quick Actions</h2>
+        <div className="actions-grid">
+          <QuickActionCard
+            icon={<PlusIcon />}
+            title="Create Position"
+            description="Define a new job position with custom evaluation criteria"
+            to="/positions"
+            color="var(--color-primary-500)"
+          />
+          <QuickActionCard
+            icon={<CandidateIcon />}
+            title="Add Candidates"
+            description="Enter candidate data for evaluation"
+            to="/positions"
+            color="var(--color-accent-500)"
+          />
+          <QuickActionCard
+            icon={<RocketIcon />}
+            title="Run Analysis"
+            description="Execute TOPSIS algorithm and view rankings"
+            to="/analysis"
+            color="var(--color-warning-500)"
+          />
+        </div>
+      </section>
 
-            {/* Styles */}
-            <style>{`
+      {/* Getting Started Guide */}
+      <section className="guide-section">
+        <div className="guide-card">
+          <h2 className="guide-title">Getting Started</h2>
+          <div className="steps">
+            <div className="step">
+              <div className="step-number">1</div>
+              <div className="step-content">
+                <h4>Create a Position</h4>
+                <p>Define the job role and set up custom evaluation attributes (skills, experience, etc.)</p>
+              </div>
+            </div>
+            <div className="step">
+              <div className="step-number">2</div>
+              <div className="step-content">
+                <h4>Add Candidates</h4>
+                <p>Enter candidate data with scores for each attribute you defined</p>
+              </div>
+            </div>
+            <div className="step">
+              <div className="step-number">3</div>
+              <div className="step-content">
+                <h4>Set Weights</h4>
+                <p>Assign importance weights to each attribute (must sum to 1.0)</p>
+              </div>
+            </div>
+            <div className="step">
+              <div className="step-number">4</div>
+              <div className="step-content">
+                <h4>Run TOPSIS Analysis</h4>
+                <p>Get objective, mathematically-grounded candidate rankings</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Styles */}
+      <style>{`
         .dashboard {
           padding: 2rem;
           max-width: 1400px;
@@ -476,8 +480,8 @@ function Dashboard() {
           }
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 }
 
 export default Dashboard;
