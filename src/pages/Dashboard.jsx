@@ -237,10 +237,11 @@ const TrendIcon = () => (
 function Dashboard() {
   // Use Convex queries for real data
   const positions = useQuery(api.positions.list) || [];
+  const candidateCount = useQuery(api.candidates.count) ?? 0;
 
   const stats = {
     positions: positions.length,
-    candidates: 0,  // Will be updated in Milestone 3
+    candidates: candidateCount,
     analyses: 0,    // Will be updated in Milestone 4
   };
 

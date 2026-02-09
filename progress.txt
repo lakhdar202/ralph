@@ -1,5 +1,5 @@
 # Recruitment TOPSIS Platform - Progress Tracker
-Last Updated: 2026-02-09 10:15
+Last Updated: 2026-02-09 10:58
 
 ## MILESTONE 1: Project Foundation
 Status: ✅ COMPLETE
@@ -74,7 +74,62 @@ Status: ✅ COMPLETE
 ---
 
 ## MILESTONE 3: Candidate Data Entry
-Status: ⏳ NOT STARTED
+Status: ✅ COMPLETE
+
+### Completed Tasks:
+- [x] Add candidates to a position
+- [x] Dynamic form based on position's attributes
+- [x] Inline editing in table view (double-click to edit)
+- [x] Bulk data entry (paste from spreadsheet - CSV/tab-separated)
+- [x] Delete/edit individual candidates
+- [x] Validation (within min/max bounds)
+
+### Files Created in Milestone 3:
+- convex/candidates.ts - Candidate mutations/queries:
+  - listByPosition - Get all candidates for a position
+  - get - Get single candidate by ID
+  - countByPosition - Count candidates for a position
+  - count - Total candidate count across all positions
+  - create - Create single candidate
+  - createMany - Bulk import multiple candidates
+  - update - Update candidate data
+  - remove - Delete single candidate
+  - removeAllByPosition - Delete all candidates for a position
+- src/components/candidates/CandidateForm.jsx - Dynamic candidate form:
+  - Candidate name field
+  - Dynamic attribute inputs based on position configuration
+  - Min/max validation per attribute
+  - Support for both create and edit modes
+  - Form validation with error messages
+- src/components/candidates/CandidateTable.jsx - Spreadsheet-like data grid:
+  - Display all candidates with attribute values
+  - Inline editing (double-click any cell)
+  - Enter to save, Escape to cancel edits
+  - Edit/delete action buttons per row
+  - Delete confirmation modal
+- src/components/candidates/BulkImport.jsx - Bulk data import:
+  - Paste CSV or tab-separated data
+  - Auto-detect header row
+  - Data validation with error reporting
+  - Preview before import
+  - Copy template functionality
+- src/pages/PositionDetail.jsx - Updated with full candidate integration:
+  - Candidates section with count
+  - Add Candidate / Bulk Import buttons
+  - CandidateTable with inline editing
+  - Empty state with guidance
+  - "Ready for Analysis" CTA when 2+ candidates
+- src/pages/Dashboard.jsx - Updated with candidate count query
+
+### Verified:
+- Added test candidate "John Smith" with values (Exp: 5, Skills: 8, Comm: 7)
+- Candidate appears in table with correct values
+- Dashboard shows 1 position, 1 candidate
+- Real-time updates via Convex reactive queries
+- Dynamic form adapts to position's attributes
+- Inline editing hint displayed
+
+---
 
 ## MILESTONE 4: TOPSIS Engine
 Status: ⏳ NOT STARTED
