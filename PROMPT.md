@@ -1,0 +1,1 @@
+read the PLAN.md file, analyze the project and the current progress.txt info, and continue with the most important task in the plan, finish it, and verify it, and update progress.txt. ONLY DO ONE TASK AND VERIFY IT END TO END.
