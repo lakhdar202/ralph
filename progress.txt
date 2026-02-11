@@ -1,5 +1,5 @@
 # Recruitment TOPSIS Platform - Progress Tracker
-Last Updated: 2026-02-09 16:15
+Last Updated: 2026-02-11 11:15
 
 ## MILESTONE 1: Project Foundation
 Status: ✅ COMPLETE
@@ -211,14 +211,44 @@ The TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution) i
 ---
 
 ## MILESTONE 5: Results Visualization
-Status: ⏳ NOT STARTED
+Status: 🔶 IN PROGRESS
 
-### Planned Features:
-- [ ] Ranked candidate leaderboard (partial - done in Analysis page)
-- [ ] Score breakdown per candidate
-- [ ] Comparison chart (radar/bar chart using Recharts)
-- [ ] Ideal solution visualization
+### Completed Tasks:
+- [x] Ranked candidate leaderboard (done in Analysis page - Milestone 4)
+- [x] Comparison chart (bar chart + radar chart using Recharts)
+- [x] Ideal solution visualization (done in Analysis page - Milestone 4)
+
+### Remaining Tasks:
+- [ ] Score breakdown per candidate (detailed per-attribute view)
 - [ ] Export results (CSV/PDF)
+
+### Files Created in Milestone 5:
+- src/components/analysis/ResultsCharts.jsx - Recharts visualization component:
+  - ClosenessScoreChart: Horizontal bar chart comparing closeness scores
+    - Color-coded bars per candidate
+    - Custom tooltip with rank and score details
+    - Dynamic height based on candidate count
+    - Percentage axis with labels
+  - AttributeRadarChart: Radar/spider chart for multi-attribute comparison
+    - Overlaid candidate profiles on normalized 0-100 scale
+    - Attribute labels on polar axes
+    - Custom tooltip showing raw values per candidate
+    - Legend with candidate names
+    - Supports up to 5 candidates for clarity
+  - Responsive grid layout (stacks on mobile)
+  - Dark theme styled with glassmorphism hover effects
+  - Custom tooltips matching app design system
+
+- src/pages/Analysis.jsx - Updated:
+  - Added ResultsCharts import
+  - Integrated charts below ideal solutions cards
+
+### Verified:
+- Bar chart shows Jane Doe at 100% and John Smith at 0%
+- Radar chart shows multi-attribute profiles overlaid for both candidates
+- Charts render correctly with dark theme styling
+- Build succeeds with no errors (npm run build - exit code 0)
+- Responsive layout works on different screen sizes
 
 ---
 

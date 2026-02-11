@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router';
 import { useQuery, useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';
 import { topsis, validateCandidateData } from '../lib/topsis';
+import ResultsCharts from '../components/analysis/ResultsCharts';
 
 const ChartIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -372,6 +373,13 @@ function Analysis() {
                                                 </div>
                                             </div>
                                         </div>
+
+                                        {/* Visual Charts */}
+                                        <ResultsCharts
+                                            results={latestAnalysis.results}
+                                            candidates={candidates}
+                                            attributes={selectedPosition.attributes}
+                                        />
                                     </div>
                                 )}
                             </>
