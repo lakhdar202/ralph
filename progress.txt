@@ -1,5 +1,5 @@
 # Recruitment TOPSIS Platform - Progress Tracker
-Last Updated: 2026-02-11 11:15
+Last Updated: 2026-02-11 11:30
 
 ## MILESTONE 1: Project Foundation
 Status: ✅ COMPLETE
@@ -211,16 +211,14 @@ The TOPSIS (Technique for Order of Preference by Similarity to Ideal Solution) i
 ---
 
 ## MILESTONE 5: Results Visualization
-Status: 🔶 IN PROGRESS
+Status: ✅ COMPLETE
 
 ### Completed Tasks:
 - [x] Ranked candidate leaderboard (done in Analysis page - Milestone 4)
 - [x] Comparison chart (bar chart + radar chart using Recharts)
 - [x] Ideal solution visualization (done in Analysis page - Milestone 4)
-
-### Remaining Tasks:
-- [ ] Score breakdown per candidate (detailed per-attribute view)
-- [ ] Export results (CSV/PDF)
+- [x] Score breakdown per candidate (detailed per-attribute view)
+- [x] Export results (CSV/PDF)
 
 ### Files Created in Milestone 5:
 - src/components/analysis/ResultsCharts.jsx - Recharts visualization component:
@@ -239,16 +237,57 @@ Status: 🔶 IN PROGRESS
   - Dark theme styled with glassmorphism hover effects
   - Custom tooltips matching app design system
 
+- src/components/analysis/ScoreBreakdown.jsx - Per-candidate detailed breakdown:
+  - Expandable candidate cards with click-to-expand interaction
+  - Detailed attribute table showing for each candidate:
+    - Raw input values per attribute
+    - Normalized values (after vector normalization)
+    - Weighted normalized values
+    - Ideal Best (A+) and Ideal Worst (A-) per attribute
+  - Visual "Attribute Performance vs Ideal" progress bars
+    - Color-coded by closeness (green/yellow/red)
+    - Percentage of distance to ideal best
+  - Formula breakdown card showing D+, D-, and final closeness score
+  - Re-computes TOPSIS intermediate data from candidates + attributes
+  - Animated expand/collapse transitions
+  - Responsive design with mobile-friendly layout
+  - Color-coded candidate cards with left border
+
+- src/components/analysis/ExportResults.jsx - Export functionality:
+  - CSV Export: Full spreadsheet-ready data file including:
+    - Rankings with closeness scores
+    - Raw candidate values
+    - Normalized values
+    - Weighted normalized values
+    - Ideal Best/Worst solutions
+    - Attribute configuration
+  - PDF Export: Printable HTML report opened in new window:
+    - Professional styled report with gradient header
+    - Rankings table with medal emojis
+    - Raw values, weighted values tables
+    - Ideal solutions comparison cards
+    - Attribute configuration table
+    - TOPSIS methodology explanation
+    - Print-optimized CSS with color preservation
+  - Hover effects with color-coded buttons (green for CSV, red for PDF)
+  - Download icon animation on hover
+
 - src/pages/Analysis.jsx - Updated:
-  - Added ResultsCharts import
-  - Integrated charts below ideal solutions cards
+  - Added ScoreBreakdown import and integration
+  - Added ExportResults import and integration
+  - Components placed after charts in results flow
 
 ### Verified:
 - Bar chart shows Jane Doe at 100% and John Smith at 0%
 - Radar chart shows multi-attribute profiles overlaid for both candidates
-- Charts render correctly with dark theme styling
+- Score Breakdown expandable cards render correctly
+- Expanding Jane Doe shows detailed table with all TOPSIS intermediate values
+- Performance bars show correct closeness percentages to ideal
+- Formula breakdown displays D+, D-, and final score
+- Export CSV and PDF buttons render with correct styling
 - Build succeeds with no errors (npm run build - exit code 0)
 - Responsive layout works on different screen sizes
+- No console errors affecting functionality
 
 ---
 

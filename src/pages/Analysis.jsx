@@ -4,6 +4,8 @@ import { useQuery, useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';
 import { topsis, validateCandidateData } from '../lib/topsis';
 import ResultsCharts from '../components/analysis/ResultsCharts';
+import ScoreBreakdown from '../components/analysis/ScoreBreakdown';
+import ExportResults from '../components/analysis/ExportResults';
 
 const ChartIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -376,6 +378,21 @@ function Analysis() {
 
                                         {/* Visual Charts */}
                                         <ResultsCharts
+                                            results={latestAnalysis.results}
+                                            candidates={candidates}
+                                            attributes={selectedPosition.attributes}
+                                        />
+
+                                        {/* Score Breakdown Per Candidate */}
+                                        <ScoreBreakdown
+                                            results={latestAnalysis.results}
+                                            candidates={candidates}
+                                            attributes={selectedPosition.attributes}
+                                        />
+
+                                        {/* Export Results */}
+                                        <ExportResults
+                                            positionName={selectedPosition.name}
                                             results={latestAnalysis.results}
                                             candidates={candidates}
                                             attributes={selectedPosition.attributes}
